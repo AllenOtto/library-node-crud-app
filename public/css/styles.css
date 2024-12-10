@@ -29,3 +29,7 @@ body {
     border: none;
     padding: .3em;
 }
+
+.container ul li {
+    list-style: none;
+}
