@@ -1,22 +1,5 @@
 const Book = require("../models/book.model.js");
 
-// Controller to get all books
-const getBooks = async (req, res) => {
-    
-    try {
-        const allBooks = await Book.find({});
-
-        // Check
-        if(!allBooks) {
-            return res.status(404).json({ message: "Sorry. No books in stock yet. Please try later." });
-        }
-
-        res.status(200).json(allBooks);
-    } catch(err) {
-        res.status(500).json({ message: err.message });
-    }
-};
-
 // Controller to retrieve a book
 const getBook = async (req, res) => {
     const { id } = req.params;
@@ -84,5 +67,5 @@ const deleteBook = async (req, res) => {
 
 // Export controllers to our routes page
 module.exports = {
-    getBooks, getBook, addBook, updateBook, deleteBook
+    getBook, addBook, updateBook, deleteBook
 };

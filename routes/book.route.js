@@ -1,12 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const { getBooks,
-        getBook,
+const {getBook,
         addBook,
         updateBook,
         deleteBook } = require("../controllers/book.controller.js");
 
-router.get("/", getBooks);
+// router.get("/", getBooks);
 
 router.get("/:id", getBook);
 

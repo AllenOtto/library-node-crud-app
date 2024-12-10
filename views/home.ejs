@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Black African Grand Library</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="header">
+        <h1>The Black African Grand Library</h1>
+        <h2>Nairobi Chapter</h2>
+    </div>
+
+    <div class="container">
+        <div class="box display">
+            <div class="box-title">
+                <h3>Book Titles</h3>
+            </div>
+            <% for(var i = 0; i < allBooks.length; i++) { %>
+                <p><span><%= allBooks[i].title %></span> - <span><%= allBooks[i].author %></span> <span><button>Edit</button></span> <span><button>Del</button></span> <span><button>Download</button></span></p>
+                <hr>
+            <% } %>
+        </div>
+        <div class="box forms">
+            <div class="box-title">
+                <h3>Action Box</h3>
+            </div>
+            <div class="form">
+                <h4>Upload New Book Entry</h4>
+                <form action="/api/books/addBook" method="POST">
+                    <input type="text" name="book-title" placeholder="Enter book title" required><br>
+                    <input type="text" name="book-author" placeholder="Enter author name" required><br>
+                    <input type="text" name="book-isbn" placeholder="Enter book ISBN number"><br>
+                    <input type="file" name="book-cover" placeholder="Upload cover image"><br><br>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="js/main.js"></script>
+</body>
+</html>
