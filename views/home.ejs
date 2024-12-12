@@ -21,7 +21,7 @@
                 <% for(var i = 0; i < allBooks.length; i++) { %>
                     <li>
                         <span><%= allBooks[i].title %></span> - <span><%= allBooks[i].author %></span>
-                        <span><button id="editBtn" onclick="editItem('<%= allBooks[i]._id %>')">Edit</button></span>
+                        <span><button id="editBtn" onclick="editItem('<%= allBooks[i]._id %>', '<%= allBooks[i].title %>', '<%= allBooks[i].author %>', '<%= allBooks[i].isbn %>', '<%= allBooks[i].image %>')">Edit</button></span>
                         <span><button id="delBtn" onclick="deleteItem('<%= allBooks[i]._id %>')">Del</button></span>
                         <span><button id="downloadBtn" onclick="downloadItem('<%= allBooks._id %>')">Download</button></span>
                     </li>
@@ -30,7 +30,8 @@
             </ul>
         </div>
         <div class="box forms">
-            <div class="box-title">
+            <div class="action-box">
+                <div class="box-title">
                 <h3>Action Box</h3>
             </div>
             <div class="form">
@@ -42,6 +43,23 @@
                     <input type="file" name="image" placeholder="Upload cover image"><br><br>
                     <button type="submit">Submit</button>
                 </form>
+            </div>
+            </div>
+            <div class="action-box">
+                <div class="box-title">
+                <h3>Action Box</h3>
+                </div>
+            <div class="form">
+                <h4>Edit Book Details</h4>
+                <form id="updateForm" action="" method="POST">
+                    <input type="hidden" id="updateId" name="_id">
+                    <input type="text" id="updateTitle" name="title" required><br>
+                    <input type="text" id="updateAuthor" name="author" required><br>
+                    <input type="text" id="updateIsbn" name="isbn"><br>
+                    <input type="file" id="updateImage" name="image"><br><br>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
             </div>
         </div>
     </div>

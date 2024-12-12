@@ -12,7 +12,7 @@ router.get("/:id", getBook);
 
 router.post("/addbook", addBook);
 
-router.put("/updateBook/:id", updateBook);
+router.post("/updateBook/:id", updateBook);
 
 router.delete("/deleteBook/:id", deleteBook);
 

@@ -30,7 +30,7 @@ dbPwd = process.env.DB_PWD;
 mongoose.connect(`mongodb+srv://${dbUser}:${dbPwd}@cluster0.jov96of.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`)
 .then(() => {
     console.log("Database connected successfully");
-
+ 
     // Run server on designated port
     app.listen(3000, () => {
         console.log("Server running");
