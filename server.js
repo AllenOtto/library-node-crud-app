@@ -4,6 +4,20 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const bookRoute = require("./routes/book.route.js");
 const Book = require("./models/book.model.js");
+const multer = require("multer");
+
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, "./uploadsHere");
+    },
+
+    filename: (req, file, cb) => {
+        const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
+        cb(null, file.originalname + "-" + uniqueSuffix);
+    },
+});
+
+const upload = multer({ storage });
 
 const app = express();
 
@@ -54,6 +68,10 @@ app.get("/", async (req, res) => {
     } catch(error) {
         res.status(500).json({ message: error.message });
     }
+});
+
+app.post("/upload", upload.single("book-upload"), (req, res) => {
+    res.json(req.file);
 });
 
 // app.get("/api/books", );

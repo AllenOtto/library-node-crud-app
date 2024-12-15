@@ -12,7 +12,12 @@ body {
     text-align: center;
 }
 
-.container {
+.pre-footer {
+    padding: 2em 3em;
+    margin: 0 auto;
+}
+
+.sub-container {
     padding: 0 1.2em;
     margin: 0 auto;
     display: flex;

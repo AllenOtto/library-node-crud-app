@@ -13,54 +13,65 @@
     </div>
 
     <div class="container">
-        <div class="box display">
-            <div class="box-title">
-                <h3>Book Titles</h3>
-            </div>
-            <ul>
-                <% for(var i = 0; i < allBooks.length; i++) { %>
-                    <li>
-                        <span><%= allBooks[i].title %></span> - <span><%= allBooks[i].author %></span>
-                        <span><button id="editBtn" onclick="editItem('<%= allBooks[i]._id %>', '<%= allBooks[i].title %>', '<%= allBooks[i].author %>', '<%= allBooks[i].isbn %>', '<%= allBooks[i].image %>')">Edit</button></span>
-                        <span><button id="delBtn" onclick="deleteItem('<%= allBooks[i]._id %>')">Del</button></span>
-                        <span><button id="downloadBtn" onclick="downloadItem('<%= allBooks._id %>')">Download</button></span>
-                    </li>
-                    <hr>
-                <% } %>
-            </ul>
-        </div>
-        <div class="box forms">
-            <div class="action-box">
+        <div class="sub-container">
+            <div class="box display">
                 <div class="box-title">
-                <h3>Action Box</h3>
-            </div>
-            <div class="form">
-                <h4>Upload New Book Entry</h4>
-                <form action="/api/books/addBook" method="POST">
-                    <input type="text" name="title" placeholder="Enter book title" required><br>
-                    <input type="text" name="author" placeholder="Enter author name" required><br>
-                    <input type="text" name="isbn" placeholder="Enter book ISBN number"><br>
-                    <input type="file" name="image" placeholder="Upload cover image"><br><br>
-                    <button type="submit">Submit</button>
-                </form>
-            </div>
-            </div>
-            <div class="action-box">
-                <div class="box-title">
-                <h3>Action Box</h3>
+                    <h3>Book Titles</h3>
                 </div>
-            <div class="form">
-                <h4>Edit Book Details</h4>
-                <form id="updateForm" action="" method="POST">
-                    <input type="hidden" id="updateId" name="_id">
-                    <input type="text" id="updateTitle" name="title" required><br>
-                    <input type="text" id="updateAuthor" name="author" required><br>
-                    <input type="text" id="updateIsbn" name="isbn"><br>
-                    <input type="file" id="updateImage" name="image"><br><br>
-                    <button type="submit">Submit</button>
-                </form>
+                <ul>
+                    <% for(var i = 0; i < allBooks.length; i++) { %>
+                        <li>
+                            <span><%= allBooks[i].title %></span> - <span><%= allBooks[i].author %></span>
+                            <span><button id="editBtn" onclick="editItem('<%= allBooks[i]._id %>', '<%= allBooks[i].title %>', '<%= allBooks[i].author %>', '<%= allBooks[i].isbn %>', '<%= allBooks[i].image %>')">Edit</button></span>
+                            <span><button id="delBtn" onclick="deleteItem('<%= allBooks[i]._id %>')">Del</button></span>
+                            <span><button id="downloadBtn" onclick="downloadItem('<%= allBooks._id %>')">Download</button></span>
+                            <span><button id="uploadBtn" onclick="uploadItem('<%= allBooks._id %>')">Upload</button></span>
+                        </li>
+                        <hr>
+                    <% } %>
+                </ul>
             </div>
+            <div class="box forms">
+                <div class="action-box">
+                    <div class="box-title">
+                        <h3>Action Box</h3>
+                    </div>
+                    <div class="form">
+                        <h4>Upload New Book Entry</h4>
+                        <form action="/api/books/addBook" method="POST">
+                            <input type="text" name="title" placeholder="Enter book title" required><br>
+                            <input type="text" name="author" placeholder="Enter author name" required><br>
+                            <input type="text" name="isbn" placeholder="Enter book ISBN number"><br>
+                            <input type="file" name="image" placeholder="Upload cover image"><br><br>
+                            <button type="submit">Submit</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="action-box">
+                    <div class="box-title">
+                    <h3>Action Box</h3>
+                    </div>
+                    <div class="form">
+                        <h4>Edit Book Details</h4>
+                        <form id="updateForm" action="" method="POST">
+                            <input type="hidden" id="updateId" name="_id">
+                            <input type="text" id="updateTitle" name="title" required><br>
+                            <input type="text" id="updateAuthor" name="author" required><br>
+                            <input type="text" id="updateIsbn" name="isbn"><br>
+                            <input type="file" id="updateImage" name="image"><br><br>
+                            <button type="submit">Submit</button>
+                        </form>
+                    </div>
+                </div>
             </div>
+        </div>
+
+        <div class="pre-footer">
+            <h3>Upload Book</h3>
+            <form action="/upload" method="POST" enctype="multipart/form-data">
+                <input type="file" name="book-upload" id="fileInput"><br><br>
+                <button type="submit">Submit</button>
+            </form>
         </div>
     </div>
     <script src="js/main.js"></script>
